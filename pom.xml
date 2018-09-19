@@ -76,9 +76,9 @@
 
     <!--子项目,在build父级项目时,会根据子模块的相互依赖关系整理一个build顺序,然后依次build-->
     <modules>
-        <module>etcloud-sdk-common</module>
-        <module>etcloud-spring-frame</module>
-        <module>etcloud-spring-eureka</module>
+        <!--<module>etcloud-sdk-common</module>
+        <module>etcloud-spring-frame</module>-->
+        <module>kindcloud-eureka</module>
     </modules>
 
     <!--全局配置-->
