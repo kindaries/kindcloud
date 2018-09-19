@@ -12,10 +12,8 @@
     <packaging>pom</packaging>
 
     <!--下面三个为Maven产生的文档用-->
-    <!--artifactId用来区分同一个groupId下的子项目,name只是个名称-->
-    <name>kindcloud parent</name>
-    <!--项目主页的URL-->
-    <url>http://www.baidu.com/</url>
+    <name>kindcloud parent</name><!--artifactId用来区分同一个groupId下的子项目,name只是个名称-->
+    <url>http://www.baidu.com/</url><!--项目主页的URL-->
     <description>kind云-工程管理父工程</description>
 
     <!--父项目的坐标-->
@@ -28,8 +26,7 @@
 
     <!--描述了这个项目构建环境中的前提条件。-->
     <prerequisites>
-        <!--构建该项目或使用该插件所需要的Maven的最低版本-->
-        <maven/>
+        <maven/><!--构建该项目或使用该插件所需要的Maven的最低版本-->
     </prerequisites>
 
     <!--全局变量-->
@@ -38,11 +35,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring.cloud.version>Dalston.SR2</spring.cloud.version>
-        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-        <jdbc.url>jdbc:mysql://localhost/stock?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true</jdbc.url>
-        <jdbc.username>root</jdbc.username>
-        <jdbc.password>123456</jdbc.password>
-        <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
+        <jdbc>
+            <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+            <url>jdbc:mysql://127.0.0.1:3306/stock</url>
+            <username>root</username>
+            <password>root</password>
+            <validationQuery>SELECT 1 + 1</validationQuery>
+        </jdbc>
     </properties>
 
     <!--设定主仓库,按顺序进行查找.-->
@@ -59,15 +58,18 @@
         </repository>
     </repositories>
 
+    <!--负责管理构件的发布-->
     <distributionManagement>
+        <!--release发布仓库,用来保存稳定的发行版本-->
         <repository>
             <id>maven-releases</id>
-            <name>maven-releases</name>
+            <name>releases maven</name>
             <url>http://192.168.51.133:8081/repository/maven-releases/</url>
         </repository>
+        <!--snapshot快照仓库,用于保存开发过程中的不稳定版本-->
         <snapshotRepository>
             <id>maven-snapshots</id>
-            <name>maven-snapshots</name>
+            <name>snapshots maven</name>
             <url>http://192.168.51.133:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
@@ -79,52 +81,64 @@
         <module>etcloud-spring-eureka</module>
     </modules>
 
+    <!--全局配置-->
     <build>
+        <!--项目源码目录-->
         <sourceDirectory>src/main/java</sourceDirectory>
+        <!--脚本源码目录,无需编译-->
+        <scriptSourceDirectory>src/main/resources</scriptSourceDirectory>
+        <!--所有资源路径列表-->
         <resources>
+            <!--配置过滤规则-->
             <resource>
                 <directory>src/main/java</directory>
+                <!--需要过滤的文件-->
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
-                <filtering>false</filtering>
+                <!--是否使用参数值代替参数名-->
+                <filtering>false</filtering><!--filtering为false的时候,会把不需要过滤的文件打到classpath下-->
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+        <!--单元测试源码目录-->
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>
-                <filtering>true</filtering>
+                <!--不需要过滤的文件-->
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
+                <filtering>true</filtering><!--filtering为true的时候,这时只会把过滤的文件打到classpath下-->
             </testResource>
         </testResources>
+        <!--使用的插件列表-->
         <plugins>
+            <!--指定项目源码的jdk版本,编码格式的插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                    <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+                    <source>1.8</source><!--源代码使用的JDK版本-->
+                    <target>1.8</target><!--需要生成的目标class文件的编译版本-->
+                    <encoding>UTF-8</encoding><!--字符集编码-->
+                    <!--这个选项用来传递编译器自身不包含但是却支持的参数选项-->
                     <compilerArguments>
                         <verbose/>
                         <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>
             </plugin>
+            <!--自动将源码打包并发布的插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <configuration>
                     <attach>true</attach>
-
                 </configuration>
                 <executions>
                     <execution>
@@ -135,6 +149,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--执行测试用例的插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -143,7 +158,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
 
 </project>
