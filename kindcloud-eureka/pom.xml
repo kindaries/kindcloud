@@ -24,13 +24,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
-        <!--授权 -->
-        <dependency>
-            <groupId>com.szhtxx.etcloud</groupId>
-            <artifactId>etcloud-license-verify</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-        <!-- end -->
+
     </dependencies>
 
     <dependencyManagement>
