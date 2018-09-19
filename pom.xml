@@ -1,163 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.szhtxx.etcloud</groupId>
-	<artifactId>etcloud-parent</artifactId>
-	<version>3.5.0</version>
-	<packaging>pom</packaging>
-	<name>etcloud-parent</name>
-	<description>易税云-工程管理父工程</description>
-	<parent>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Dalston.SR2</version>
-		<relativePath/>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--POM模型版本-->
+    <modelVersion>4.0.0</modelVersion>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring.cloud.version>Dalston.SR2</spring.cloud.version>
-		<junit.version>4.12</junit.version>
-		<redis.version>1.3.8.RELEASE</redis.version>
-		<druid.version>1.0.25</druid.version>
-		<jjwt.version>0.6.0</jjwt.version>
-		<fastjson.version>1.2.17</fastjson.version>
-		<mybatis.spring.version>1.1.1</mybatis.spring.version>
-		<commons.lang3.version>3.1</commons.lang3.version>
-		<commons.lang3.version>3.1</commons.lang3.version>
-		<feign.version>8.10.0</feign.version>
-		<aspectj.version>1.8.9</aspectj.version>
-		<spring.boot.version>1.5.4.RELEASE</spring.boot.version>
-		<spring.boot.aop.version>1.5.4.RELEASE</spring.boot.aop.version>
-		<springfox.version>2.4.0</springfox.version>
-		<docker.plugin.version>0.4.13</docker.plugin.version>
-		<docker.image.prefix>etcloud</docker.image.prefix>
-		<activiti.version>5.22.0</activiti.version>
-		<org.apache.poi.version>3.9</org.apache.poi.version>
-		<commons-io.version>1.3.2</commons-io.version>
-		<org.apache.cxf>3.2.1</org.apache.cxf>
-		<com.oracle>11.2.0.4.0-atlassian-hosted</com.oracle>
-		<org.apache.pdfbox>2.0.8</org.apache.pdfbox>
-		<org.apache.ant>1.9.9</org.apache.ant>
-		<com.google.zxing>3.3.0</com.google.zxing>
-	</properties>
+    <!--项目包名,项目名,版本号,项目的打包类型(父级pom,子级jar(默认),war)-->
+    <groupId>top.aries.kind</groupId>
+    <artifactId>kindcloud-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
 
-	<!-- 设定主仓库，按设定顺序进行查找。 -->
-	<repositories>
-		<repository>
-			<id>maven-public</id>
-			<name>maven-public</name>
-			<url>http://192.168.51.133:8081/repository/maven-public/</url>
-		</repository>
-	</repositories>
+    <!--下面三个为Maven产生的文档用-->
+    <!--artifactId用来区分同一个groupId下的子项目,name只是个名称-->
+    <name>kindcloud parent</name>
+    <!--项目主页的URL-->
+    <url>http://www.baidu.com/</url>
+    <description>kind云-工程管理父工程</description>
 
-	<distributionManagement>
-		<repository>
-			<id>maven-releases</id>
-			<name>maven-releases</name>
-			<url>http://192.168.51.133:8081/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>maven-snapshots</id>
-			<name>maven-snapshots</name>
-			<url>http://192.168.51.133:8081/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <!--父项目的坐标-->
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Dalston.SR2</version>
+        <relativePath/>
+    </parent>
 
-	<modules>
-		<module>etcloud-sdk-common</module>
-		<module>etcloud-spring-frame</module> <!-- 框架依赖jar包 -->
-		<module>etcloud-spring-eureka</module><!-- 服务端口 851* -->
-		<module>etcloud-spring-turbine</module><!--熔断监控管理 8570,只需要部署一个-->
-		<module>etcloud-spring-zuul</module><!-- 服务端口 852* -->
-		<module>etcloud-sys-api</module><!-- 接口提供包-->
-		<module>etcloud-sys-app</module><!-- 服务端口 853* -->
-		<module>etcloud-workflow-api</module><!-- 接口提供包-->
-		<module>etcloud-workflow-app</module><!-- 服务端口 855* -->
-		<module>etcloud-license-manager</module>
-        <module>etcloud-license-verify</module>
-   		<module>etcloud-ovat-app</module><!-- 服务端口 854* -->
-        <module>etcloud-ovat-api</module>
-        <module>etcloud-bi-app</module><!-- 服务端口 856* -->
-        <module>etcloud-bi-api</module>
-        <module>etcloud-ivat-app</module><!-- 服务端口 858* -->
-        <module>etcloud-ivat-api</module>
-        <module>etcloud-mock</module><!-- 服务端口 9999 外部接口模拟服务 -->
-        <module>etcloud-sync-datax</module>
-        <module>etcloud-sb-api</module>
-        <module>etcloud-sb-app</module><!-- 服务端口 859* -->
-        <module>etcloud-report-api</module>
-		<module>etcloud-report-app</module><!-- 集成报表工程 8600-->
-		<!--<module>etcloud-example</module>--><!-- 易税云 外部集成调用例子 9998-->
-	</modules>
-	
-	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-		<testSourceDirectory>src/test/java</testSourceDirectory>
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</testResource>
-		</testResources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<encoding>UTF-8</encoding>
-					<!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
-					<compilerArguments>
-						<verbose/>
-						<bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
-					</compilerArguments>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
-					<attach>true</attach>
+    <!--描述了这个项目构建环境中的前提条件。-->
+    <prerequisites>
+        <!--构建该项目或使用该插件所需要的Maven的最低版本-->
+        <maven/>
+    </prerequisites>
 
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skipTests>true</skipTests>
-				</configuration>
-			</plugin>
-		</plugins>
+    <!--全局变量-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring.cloud.version>Dalston.SR2</spring.cloud.version>
+        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.url>jdbc:mysql://localhost/stock?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true</jdbc.url>
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password>123456</jdbc.password>
+        <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
+    </properties>
 
-	</build>
+    <!--设定主仓库,按顺序进行查找.-->
+    <repositories>
+        <repository>
+            <id>maven-public</id>
+            <name>aisino maven</name>
+            <url>http://192.168.51.133:8081/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>maven-releases</name>
+            <url>http://192.168.51.133:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>maven-snapshots</name>
+            <url>http://192.168.51.133:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!--子项目,在build父级项目时,会根据子模块的相互依赖关系整理一个build顺序,然后依次build-->
+    <modules>
+        <module>etcloud-sdk-common</module>
+        <module>etcloud-spring-frame</module>
+        <module>etcloud-spring-eureka</module>
+    </modules>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+                    <compilerArguments>
+                        <verbose/>
+                        <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 
 </project>
