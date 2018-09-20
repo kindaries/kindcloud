@@ -5,7 +5,7 @@ eureka:
     leaseExpirationDurationInSeconds: 60
   client:
     serviceUrl:
-      defaultZone: http://localhost:7510/eureka/
+      defaultZone: http://127.0.0.1:7510/eureka/
 
 license.enable: false
 license.registerKey: "abcdefghijklmnopqrstuvwxyz123456"

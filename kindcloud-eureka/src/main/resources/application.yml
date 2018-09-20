@@ -29,6 +29,6 @@ eureka.server. useReadOnlyResponseCache: false
 
 #LogBack日志配置
 logging:
-  path: /data/etcloud/logs
+  path: /data/kindcloud/logs
   config: classpath:config/logback-spring.xml
   log-level: INFO
