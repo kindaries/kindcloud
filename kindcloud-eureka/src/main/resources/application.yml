@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: kindcloud-eureka
+  #dev表示为开发环境
+  profiles:
+    active: dev
+server:
+  port: 7510
+
+license:
+  enable: ${license.enable}
+  registerKey: ${license.registerKey}
+  serverLicCode: ${license.serverLicCode}
+
+#服务刷新时间控制
+## 中小规模下，自我保护模式坑比好处多，所以关闭它
+eureka.server.enableSelfPreservation: false
+## 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置
+## eureka.server.renewalThresholdUpdateIntervalMs=120000
+## 主动失效检测间隔,配置成5秒
+eureka.server.evictionIntervalTimerInMs: 5000
+## 心跳间隔，5秒
+eureka.instance.leaseRenewalIntervalInSeconds: 5
+## 没有心跳的淘汰时间，10秒
+eureka.instance.leaseExpirationDurationInSeconds: 10
+## 禁用readOnlyCacheMap
+eureka.server. useReadOnlyResponseCache: false
+
+
+#LogBack日志配置
+logging:
+  path: /data/etcloud/logs
+  config: classpath:config/logback-spring.xml
+  log-level: INFO
