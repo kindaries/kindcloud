@@ -28,6 +28,7 @@ eureka.server. useReadOnlyResponseCache: false
 
 
 #LogBack日志配置
+#级别排序为： TRACE < DEBUG < INFO < WARN < ERROR
 logging:
   path: /data/kindcloud/logs
   config: classpath:config/logback-spring.xml
