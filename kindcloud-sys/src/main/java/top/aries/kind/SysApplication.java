@@ -15,7 +15,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient //服务注册与发现
 @EnableFeignClients   //允许远程调用
-@MapperScan("top.aries.kind.mapper")//将项目中对应的mapper类的路径加进来就可以了
+//@MapperScan("top.aries.kind.mapper")//将项目中对应的mapper类的路径加进来,如果mapper类有加注解则不需要
 public class SysApplication {
 
 	public static void main(String[] args) {
