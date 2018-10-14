@@ -7,8 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Author: kindaries
+ * Company: shenzhen Aisino
+ * Date: Created in 2018-09-20 11:32
+ * Created by IntelliJ IDEA.
+ */
 @SpringBootApplication
-@EnableEurekaServer
+@EnableEurekaServer     //开启Eureka支持
 public class EurekaApplication {
 
     //定义一个全局的记录器，通过LoggerFactory获取

@@ -1,7 +1,7 @@
 spring:
   application:
     name: kindcloud-eureka
-  #dev表示为开发环境
+  #dev表示为开发环境,使用配置文件application-dev
   profiles:
     active: dev
 server:

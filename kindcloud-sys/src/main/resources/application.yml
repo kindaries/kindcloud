@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: "kindcloud-sys"
+  profiles:
+    active: dev
+  datasource:
+    name: test
+    url: jdbc:oracle:thin:@192.168.51.93:1521:ORCL
+    username: xxfp
+    password: xxfp
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+server:
+  port: 7530
+  tomcat:
+    uri-encoding: UTF-8
+#注册中心配置参数
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7510/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: top.aries.kind.model
+
+mapper:
+    mappers:
+        - tk.mybatis.springboot.util.MyMapper
+    not-empty: false
+    identity: Oracle
+
+pagehelper:
+    helperDialect: Oracle
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

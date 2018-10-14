@@ -35,6 +35,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring.cloud.version>Dalston.SR2</spring.cloud.version>
+        <fastjson.version>1.2.17</fastjson.version>
+        <druid.version>1.0.25</druid.version>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url>jdbc:mysql://127.0.0.1:3306/stock</jdbc.url>
         <jdbc.username>root</jdbc.username>
@@ -44,11 +46,6 @@
 
     <!--设定主仓库,按顺序进行查找.-->
     <repositories>
-        <repository>
-            <id>maven-public</id>
-            <name>aisino maven</name>
-            <url>http://192.168.51.133:8081/repository/maven-public/</url>
-        </repository>
         <repository>
             <id>alimaven</id>
             <name>aliyun maven</name>
@@ -62,21 +59,21 @@
         <repository>
             <id>maven-releases</id>
             <name>releases maven</name>
-            <url>http://192.168.51.133:8081/repository/maven-releases/</url>
+            <url>http://127.0.0.1:8080/repository/maven-releases/</url>
         </repository>
         <!--snapshot快照仓库,用于保存开发过程中的不稳定版本-->
         <snapshotRepository>
             <id>maven-snapshots</id>
             <name>snapshots maven</name>
-            <url>http://192.168.51.133:8081/repository/maven-snapshots/</url>
+            <url>http://127.0.0.1:8080/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <!--子项目,在build父级项目时,会根据子模块的相互依赖关系整理一个build顺序,然后依次build-->
     <modules>
-        <!--<module>etcloud-sdk-common</module>
-        <module>etcloud-spring-frame</module>-->
         <module>kindcloud-eureka</module>
+        <module>kindcloud-zuul</module>
+        <module>kindcloud-sys</module>
     </modules>
 
     <!--全局配置-->

@@ -1,0 +1,3 @@
+etcloud.eureka.url: http://localhost:7510/eureka/
+etcloud.ReadTimeout: 100000
+etcloud.ConnectTimeout: 10000

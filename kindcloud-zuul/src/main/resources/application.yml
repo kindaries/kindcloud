@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: "kindcloud-zuul"
+  profiles:
+    active: dev
+server:
+  port: 7520
+  tomcat:
+    uri-encoding: UTF-8
+#注册中心配置参数
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${etcloud.eureka.url}
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+     
+#路由         
+zuul:
+  routes:
+    kindcloud-sys:
+      path: /kindcloud-sys/**
+      service-id: kindcloud-sys
+    host:
+      connect-timeout-millis: ${etcloud.ConnectTimeout}
+      socket-timeout-millis: ${etcloud.ReadTimeout}
+
+#ribbon
+ribbon:
+  ReadTimeout: ${etcloud.ReadTimeout}
+  ConnectTimeout: ${etcloud.ConnectTimeout}
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+    
+#ureka服务提供方务过期时间配置
+## 心跳间隔，5秒
+eureka.instance.leaseRenewalIntervalInSeconds: 5
+## 没有心跳的淘汰时间，10秒
+eureka.instance.leaseExpirationDurationInSeconds: 10
+# 定时刷新本地缓存时间
+eureka.client.registryFetchIntervalSeconds: 5
+# ribbon缓存时间
+ribbon.ServerListRefreshInterval: 2000
+
+#启用熔断      
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+    
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: ${etcloud.ReadTimeout}
+#熔断配置
+hystrix.threadpool.default.coreSize: 50
+#无界限队列
+hystrix.threadpool.default.maxQueueSize: -1
+hystrix.command.default.circuitBreaker.requestVolumeThreshold: 100
+hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests: 50
+      
+spring.http.multipart.maxFileSize: 50Mb
+spring.http.multipart.maxRequestSize: 200Mb

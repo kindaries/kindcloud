@@ -1,3 +1,4 @@
+#Eureka的基础配置信息
 eureka:
   instance:
     hostname: localhost
