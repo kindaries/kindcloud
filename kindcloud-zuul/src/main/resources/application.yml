@@ -26,48 +26,8 @@ eureka:
 zuul:
   routes:
     kindcloud-sys:
-      path: /kindcloud-sys/**
+      path: /sys/**
       service-id: kindcloud-sys
     host:
       connect-timeout-millis: ${etcloud.ConnectTimeout}
       socket-timeout-millis: ${etcloud.ReadTimeout}
-
-#ribbon
-ribbon:
-  ReadTimeout: ${etcloud.ReadTimeout}
-  ConnectTimeout: ${etcloud.ConnectTimeout}
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 1
-  eureka:
-    enabled: true
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-    
-
-# ribbon缓存时间
-ribbon.ServerListRefreshInterval: 2000
-
-#启用熔断      
-feign:
-  hystrix:
-    enabled: true
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-    
-hystrix:
-  command:
-    default:
-      execution.isolation.thread.timeoutInMilliseconds: ${etcloud.ReadTimeout}
-#熔断配置
-hystrix.threadpool.default.coreSize: 50
-#无界限队列
-hystrix.threadpool.default.maxQueueSize: -1
-hystrix.command.default.circuitBreaker.requestVolumeThreshold: 100
-hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests: 50
-      
-spring.http.multipart.maxFileSize: 50Mb
-spring.http.multipart.maxRequestSize: 200Mb
