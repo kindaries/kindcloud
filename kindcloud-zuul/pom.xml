@@ -17,6 +17,7 @@
 
     <dependencies>
 
+        <!--这个依赖中已经有ribbon的依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>

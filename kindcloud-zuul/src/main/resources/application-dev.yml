@@ -1,3 +1,17 @@
-etcloud.eureka.url: http://localhost:7510/eureka/
+#当在spring.profiles.active中指定为dev时,会使用这个文件里的配置
+#当与application.yml文件里的配置重合时,这个文件里配置会覆盖原配置
+
+#心跳频率,默认30秒
+eureka.instance.leaseRenewalIntervalInSeconds: 5
+#心跳超时时间,默认为90秒
+eureka.instance.leaseExpirationDurationInSeconds: 10
+
+kindcloud.eureka.url: http://localhost:7510/eureka/
+#连接超时时间
 etcloud.ReadTimeout: 100000
+#读取超时时间
 etcloud.ConnectTimeout: 10000
+
+
+# 定时刷新本地缓存时间
+eureka.client.registryFetchIntervalSeconds: 5

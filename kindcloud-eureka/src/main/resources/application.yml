@@ -1,35 +1,43 @@
+#server服务参数配置
+server:
+  port: 7510                #服务端口
+  tomcat:
+    uri-encoding: UTF-8     #指定tomcat的编码格式
+
+#spring参数配置
 spring:
   application:
-    name: kindcloud-eureka
-  #dev表示为开发环境,使用配置文件application-dev
+    name: kindcloud-eureka  #指定服务名
   profiles:
-    active: dev
-server:
-  port: 7510
+    active: dev             #dev表示为开发环境,使用配置文件application-dev
 
+#注册中心参数配置
+eureka:
+  server:
+    enableSelfPreservation: false                 #自我保护模式,中小规模下坑比好处多,所以关闭它
+    #renewalThresholdUpdateIntervalMs: 120000      #心跳阈值计算周期,如果开启自我保护模式,可以改一下这个配置
+    evictionIntervalTimerInMs: 5000               #主动失效检测间隔,配置成5秒
+    useReadOnlyResponseCache: false               #禁用readOnlyCacheMap
+  instance:
+    #hostname: ${spring.cloud.client.ipAddress}    #主机名
+    leaseRenewalIntervalInSeconds: 20             #心跳频率,默认30秒
+    leaseExpirationDurationInSeconds: 60          #心跳超时时间,默认为90秒
+    preferIpAddress: true                         #将IP注册到Eureka Server上,默认机器的主机名
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}  #实例Status显示的内容
+  client:
+    registerWithEureka: true                      #是否将自己注册到Eureka服务中,默认为true
+    fetchRegistry: false                          #此客户端是否获取eureka服务器注册表上的注册信息,默认为true,开启会有错误信息
+    serviceUrl:
+      defaultZone: ${kindcloud.eureka.url}          #Eureka服务地址
+
+#授权参数配置
 license:
   enable: ${license.enable}
   registerKey: ${license.registerKey}
   serverLicCode: ${license.serverLicCode}
 
-#服务刷新时间控制
-## 中小规模下，自我保护模式坑比好处多，所以关闭它
-eureka.server.enableSelfPreservation: false
-## 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置
-## eureka.server.renewalThresholdUpdateIntervalMs=120000
-## 主动失效检测间隔,配置成5秒
-eureka.server.evictionIntervalTimerInMs: 5000
-## 心跳间隔，5秒
-eureka.instance.leaseRenewalIntervalInSeconds: 5
-## 没有心跳的淘汰时间，10秒
-eureka.instance.leaseExpirationDurationInSeconds: 10
-## 禁用readOnlyCacheMap
-eureka.server. useReadOnlyResponseCache: false
-
-
-#LogBack日志配置
-#级别排序为： TRACE < DEBUG < INFO < WARN < ERROR
+#LogBack日志参数配置
 logging:
   path: /data/kindcloud/logs
   config: classpath:config/logback-spring.xml
-  log-level: INFO
+  log-level: INFO                                 #级别排序为： TRACE < DEBUG < INFO < WARN < ERROR

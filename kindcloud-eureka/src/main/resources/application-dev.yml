@@ -1,13 +1,17 @@
-#Eureka的基础配置信息
-eureka:
-  instance:
-    hostname: localhost
-    leaseRenewalIntervalInSeconds: 20
-    leaseExpirationDurationInSeconds: 60
-  client:
-    serviceUrl:
-      defaultZone: http://127.0.0.1:7510/eureka/
+#当在spring.profiles.active中指定为dev时,会使用这个文件里的配置
+#当与application.yml文件里的配置重合时,这个文件里配置会覆盖原配置
 
-license.enable: false
+#心跳频率,默认30秒
+eureka.instance.leaseRenewalIntervalInSeconds: 5
+#心跳超时时间,默认为90秒
+eureka.instance.leaseExpirationDurationInSeconds: 10
+#是否将自己注册到Eureka服务中，默认为true
+eureka.client.registerWithEureka: true
+
+#授权参数配置
+license.enable: true
+license.serverLicCode: "6dH7aVC5PsZf"
 license.registerKey: "abcdefghijklmnopqrstuvwxyz123456"
-license.serverLicCode: "6dH7aVC5PsZfYaf7/Qodvthz09bzPuTIXAjqz/8a4crN1tqibd5HkbLaqULE01pOl5R3ZgXbSYL6\r\nFFuMhrhNKiwWviAnjE0ANuCxUUlo39VdsbfaDb1HWQ==9UXkpiJxR91hu8ZaUzzbFg=="
+
+
+kindcloud.eureka.url: http://localhost:7510/eureka/

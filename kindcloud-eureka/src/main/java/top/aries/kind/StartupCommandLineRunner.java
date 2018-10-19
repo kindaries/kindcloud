@@ -1,5 +1,7 @@
 package top.aries.kind;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
@@ -15,19 +17,23 @@ import org.springframework.stereotype.Component;
 @Order(value = 0)
 public class StartupCommandLineRunner implements CommandLineRunner {
 
-    @Value("${license.registerKey}")
-    private String registerKey;
+    @Value("${license.enable}")
+    private boolean licenseEnable;
 
     @Value("${license.serverLicCode}")
     private String serverLicCode;
 
-    @Value("${license.enable}")
-    private boolean licenseEnable;
+    @Value("${license.registerKey}")
+    private String registerKey;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void run(String... args) throws Exception {
+        logger.info("触发授权机制......");
         if (licenseEnable) {
-            if (verifyServerLic(registerKey, serverLicCode)) {
+            if (!verifyServerLic(serverLicCode, registerKey)) {
+                logger.error("授权失败");
                 throw new Exception("授权失败");
             }
         }
@@ -35,7 +41,7 @@ public class StartupCommandLineRunner implements CommandLineRunner {
     }
 
     public boolean verifyServerLic(String serverLicCode, String registerKey) {
-        if ("007".equals(serverLicCode) && "ASDFGHJKL".equals(registerKey))
+        if ("6dH7aVC5PsZf".equals(serverLicCode) && "abcdefghijklmnopqrstuvwxyz123456".equals(registerKey))
             return true;
         else
             return false;

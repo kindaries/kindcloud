@@ -25,9 +25,4 @@ public class EurekaApplication {
         SpringApplication.run(EurekaApplication.class, args);
     }
 
-    @RequestMapping("/info")
-    public String hello(){
-        return "Hello world!";
-    }
-
 }
