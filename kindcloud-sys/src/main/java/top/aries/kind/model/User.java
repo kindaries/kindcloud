@@ -3,19 +3,23 @@ package top.aries.kind.model;
 import java.util.Date;
 
 public class User {
-    private Long id;
+    private Integer id;
 
     private String username;
 
-    private Long age;
+    private Integer password;
 
-    private Date ctm;
+    private String sex;
 
-    public Long getId() {
+    private Integer age;
+
+    private Date ctime;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,19 +31,35 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public Long getAge() {
+    public Integer getPassword() {
+        return password;
+    }
+
+    public void setPassword(Integer password) {
+        this.password = password;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(Long age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public Date getCtm() {
-        return ctm;
+    public Date getCtime() {
+        return ctime;
     }
 
-    public void setCtm(Date ctm) {
-        this.ctm = ctm;
+    public void setCtime(Date ctime) {
+        this.ctime = ctime;
     }
 }

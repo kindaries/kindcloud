@@ -13,5 +13,5 @@ public interface UserService {
 
     List<User> findAllUser(int pageNum, int pageSize);
 
-    User getUserById(long id);
+    User getUserById(Integer id);
 }

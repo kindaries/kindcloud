@@ -1,86 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shuaidi.mapper.UserMapper" >
+<mapper namespace="top.aries.kind.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="top.aries.kind.model.User" >
-    <id column="ID" property="id" jdbcType="DECIMAL" />
-    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
-    <result column="AGE" property="age" jdbcType="DECIMAL" />
-    <result column="CTM" property="ctm" jdbcType="TIMESTAMP" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, USERNAME, AGE, CTM
+    id, username, password, sex, age, ctime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
     <include refid="Base_Column_List" />
-    from "kindaries".TB_USER
-    where ID = #{id,jdbcType=DECIMAL}
+    from user
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from "kindaries".TB_USER
-    where ID = #{id,jdbcType=DECIMAL}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="top.aries.kind.model.User" >
-    insert into "kindaries".TB_USER (ID, USERNAME, AGE,
-      CTM)
-    values (#{id,jdbcType=DECIMAL}, #{username,jdbcType=VARCHAR}, #{age,jdbcType=DECIMAL},
-      #{ctm,jdbcType=TIMESTAMP})
+    insert into user (id, username, password, 
+      sex, age, ctime)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="top.aries.kind.model.User" >
-    insert into "kindaries".TB_USER
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        ID,
+        id,
       </if>
       <if test="username != null" >
-        USERNAME,
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="sex != null" >
+        sex,
       </if>
       <if test="age != null" >
-        AGE,
+        age,
       </if>
-      <if test="ctm != null" >
-        CTM,
+      <if test="ctime != null" >
+        ctime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        #{age,jdbcType=DECIMAL},
+      <if test="password != null" >
+        #{password,jdbcType=INTEGER},
       </if>
-      <if test="ctm != null" >
-        #{ctm,jdbcType=TIMESTAMP},
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="top.aries.kind.model.User" >
-    update "kindaries".TB_USER
+    update user
     <set >
       <if test="username != null" >
-        USERNAME = #{username,jdbcType=VARCHAR},
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
       </if>
       <if test="age != null" >
-        AGE = #{age,jdbcType=DECIMAL},
+        age = #{age,jdbcType=INTEGER},
       </if>
-      <if test="ctm != null" >
-        CTM = #{ctm,jdbcType=TIMESTAMP},
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="top.aries.kind.model.User" >
-    update "kindaries".TB_USER
-    set USERNAME = #{username,jdbcType=VARCHAR},
-      AGE = #{age,jdbcType=DECIMAL},
-      CTM = #{ctm,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=DECIMAL}
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selectAllUser"  resultMap="BaseResultMap">
-    SELECT * from "kindaries".TB_USER
-  </select>
 </mapper>

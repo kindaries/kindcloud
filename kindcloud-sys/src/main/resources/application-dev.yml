@@ -1,0 +1,14 @@
+#当在spring.profiles.active中指定为dev时,会使用这个文件里的配置
+#当与application.yml文件里的配置重合时,这个文件里配置会覆盖原配置
+
+#心跳频率,默认30秒
+eureka.instance.leaseRenewalIntervalInSeconds: 5
+#心跳超时时间,默认为90秒
+eureka.instance.leaseExpirationDurationInSeconds: 10
+
+kindcloud.eureka.url: http://localhost:7510/eureka/
+
+kindcloud.datasource.url: jdbc:mysql://127.0.0.1/test
+kindcloud.datasource.username: root
+kindcloud.datasource.password: root
+kindcloud.datasource.driver-class-name: com.mysql.jdbc.Driver

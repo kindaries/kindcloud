@@ -30,7 +30,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, /*consumes = "application/json", */produces = {"application/json;charset=UTF-8"})
-    public User getUserById(@PathVariable("id") long id) {
+    public User getUserById(@PathVariable("id") Integer id) {
         return userService.getUserById(id);
     }
 
