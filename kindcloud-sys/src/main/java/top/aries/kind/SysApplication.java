@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 //@MapperScan("top.aries.kind.mapper")//将项目中对应的mapper类的路径加进来,如果mapper类有加注解则不需要
 public class SysApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SysApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SysApplication.class, args);
+    }
 
-	@RequestMapping(value = "/", produces = {"application/json;charset=UTF-8"})
-	public String hello() {
-		return "hello,SysApplication!";
-	}
+    @RequestMapping(value = {"/info", "/"}, produces = {"application/json;charset=UTF-8"})
+    public String hello() {
+        return "hello,SysApplication!";
+    }
 
 }

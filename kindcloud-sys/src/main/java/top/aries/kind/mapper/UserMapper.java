@@ -1,9 +1,11 @@
 package top.aries.kind.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import top.aries.kind.model.User;
 
 import java.util.List;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

@@ -1,5 +1,7 @@
 package top.aries.kind.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class User {
@@ -7,11 +9,12 @@ public class User {
 
     private String username;
 
-    private Integer password;
+    private String password;
 
     private String sex;
 
     private Integer age;
+
 
     private Date ctime;
 
@@ -31,11 +34,11 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -55,6 +58,7 @@ public class User {
         this.age = age;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCtime() {
         return ctime;
     }

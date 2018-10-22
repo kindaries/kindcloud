@@ -12,3 +12,4 @@ kindcloud.datasource.url: jdbc:mysql://127.0.0.1/test
 kindcloud.datasource.username: root
 kindcloud.datasource.password: root
 kindcloud.datasource.driver-class-name: com.mysql.jdbc.Driver
+kindcloud.datasource.mysql-jar-url: D:\maven\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar

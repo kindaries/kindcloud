@@ -15,8 +15,8 @@ spring:
     url: ${kindcloud.datasource.url}
     username: ${kindcloud.datasource.username}
     password: ${kindcloud.datasource.password}
-    driver-class-name: ${kindcloud.datasource.driver-class-name}
-    type: com.alibaba.druid.pool.DruidDataSource                # 使用druid数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource                # 使用alibaba数据库连接池
     filters: stat
     maxActive: 20
     initialSize: 1
@@ -42,18 +42,13 @@ eureka:
     serviceUrl:
       defaultZone: ${kindcloud.eureka.url}
 
-#mybatis:
-#  mapper-locations: classpath:mapping/*.xml
-#  type-aliases-package: top.aries.kind.model
-#
-#mapper:
-#    mappers:
-#        - tk.mybatis.springboot.util.MyMapper
-#    not-empty: false
-#    identity: Oracle
-#
-#pagehelper:
-#    helperDialect: Oracle
-#    reasonable: true
-#    supportMethodsArguments: true
-#    params: count=countSql
+#mybatis参数配置
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: top.aries.kind.model
+
+#LogBack日志参数配置
+logging:
+  path: /data/kindcloud/logs
+  config: classpath:config/logback-spring.xml
+  log-level: INFO

@@ -25,7 +25,7 @@ public class ZuulApplication {
         SpringApplication.run(ZuulApplication.class, args);
     }
 
-    @RequestMapping(value = "/", produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = {"/info", "/"}, produces = {"application/json;charset=UTF-8"})
     public String hello() {
         return "hello,ZuulApplication!";
     }
