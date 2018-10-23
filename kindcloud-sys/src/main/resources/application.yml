@@ -51,4 +51,4 @@ mybatis:
 logging:
   path: /data/kindcloud/logs
   config: classpath:config/logback-spring.xml
-  log-level: INFO
+  log-level: DEBUG
