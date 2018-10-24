@@ -33,7 +33,6 @@ public class StartupCommandLineRunner implements CommandLineRunner {
         logger.info("触发授权机制......");
         if (licenseEnable) {
             if (!verifyServerLic(serverLicCode, registerKey)) {
-                logger.error("授权失败");
                 throw new Exception("授权失败");
             }
         }
@@ -41,10 +40,13 @@ public class StartupCommandLineRunner implements CommandLineRunner {
     }
 
     public boolean verifyServerLic(String serverLicCode, String registerKey) {
-        if ("6dH7aVC5PsZf".equals(serverLicCode) && "abcdefghijklmnopqrstuvwxyz123456".equals(registerKey))
+        if ("6dH7aVC5PsZf".equals(serverLicCode) && "abcdefghijklmnopqrstuvwxyz123456".equals(registerKey)) {
+            logger.info("授权成功");
             return true;
-        else
+        } else {
+            logger.error("授权失败");
             return false;
+        }
     }
 
 }
