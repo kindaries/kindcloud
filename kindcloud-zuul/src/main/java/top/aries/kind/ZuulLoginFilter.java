@@ -42,6 +42,8 @@ public class ZuulLoginFilter extends ZuulFilter {
         add("/**/register.do");       //注册
         add("/**/retrieve.do");       //找回
         add("/**/login.do");          //登录
+        add("/sys/**");
+        add("/tasks/**");
     }};
 
     @Override

@@ -1,13 +1,13 @@
 #server服务参数配置
 server:
-  port: 7520                #服务端口
+  port: 7540                #服务端口
   tomcat:
     uri-encoding: UTF-8     #指定tomcat的编码格式
 
 #spring参数配置
 spring:
   application:
-    name: kindcloud-zuul    #指定服务名
+    name: kindcloud-tasks   #指定服务名
   profiles:
     active: dev             #dev表示为开发环境,使用配置文件application-dev
 
@@ -20,17 +20,4 @@ eureka:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
     serviceUrl:
-      defaultZone: ${kindcloud.eureka.url}
-
-#路由参数配置
-zuul:
-  routes:
-    kindcloud-sys:
-      path: /sys/**
-      service-id: kindcloud-sys
-    kindcloud-tasks:
-      path: /tasks/**
-      service-id: kindcloud-tasks
-    host:
-      connect-timeout-millis: ${etcloud.ConnectTimeout}
-      socket-timeout-millis: ${etcloud.ReadTimeout}
+      defaultZone: http://localhost:7510/eureka/

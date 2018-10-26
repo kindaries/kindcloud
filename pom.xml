@@ -74,6 +74,7 @@
         <module>kindcloud-eureka</module>
         <module>kindcloud-zuul</module>
         <module>kindcloud-sys</module>
+        <module>kindcloud-tasks</module>
     </modules>
 
     <!--全局配置-->
