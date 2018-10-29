@@ -1,4 +1,4 @@
-package top.aries.kind;
+package top.aries.kind.uitl;
 
 import javax.swing.*;
 import java.net.URL;

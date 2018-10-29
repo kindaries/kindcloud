@@ -1,4 +1,4 @@
-package top.aries.kind;
+package top.aries.kind.uitl;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.scheduling.annotation.EnableScheduling;

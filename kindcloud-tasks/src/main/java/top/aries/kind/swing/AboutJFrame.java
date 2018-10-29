@@ -12,8 +12,6 @@ import java.beans.PropertyVetoException;
  */
 public class AboutJFrame extends JInternalFrame {
 
-    private static AboutJFrame aboutJFrame = null;
-
     public AboutJFrame() {
         setTitle("关于我们");
         setLocation(0, 20);    //设置窗体位置
@@ -21,13 +19,6 @@ public class AboutJFrame extends JInternalFrame {
         setClosable(true);          //关闭按钮
         setIconifiable(true);       //最小化按钮
         initComponents();
-    }
-
-    public static AboutJFrame getAboutJFrame() {
-        if (aboutJFrame == null) {
-            aboutJFrame = new AboutJFrame();
-        }
-        return aboutJFrame;
     }
 
     private void initComponents() {

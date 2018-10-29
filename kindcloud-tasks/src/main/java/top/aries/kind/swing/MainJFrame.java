@@ -1,12 +1,14 @@
 package top.aries.kind.swing;
 
-import com.java1234.view.AboutJava1234InterFrm;
+import top.aries.kind.uitl.FingerEnum;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author: kindaries
@@ -17,6 +19,7 @@ import java.net.URL;
 public class MainJFrame extends JFrame {
 
     private JDesktopPane table;         //分层面板
+    private JComboBox box;
 
     /**
      * 一个Swing对象
@@ -41,33 +44,25 @@ public class MainJFrame extends JFrame {
         j.setOpaque(false);
 
         JMenuBar jMenuBar = new JMenuBar();      //菜单栏
-        JMenu jMenu = new JMenu();              //菜单
-        JMenuItem about = new JMenuItem();              //菜单
-        JMenuItem login = new JMenuItem();       //菜单项
-        JMenuItem register = new JMenuItem();    //菜单项
+        JMenu jMenu1 = new JMenu();              //菜单
+        JMenu jMenu2 = new JMenu();              //菜单
+        JMenuItem about = new JMenuItem();       //菜单项
         JMenuItem quit = new JMenuItem();        //菜单项
         table = new JDesktopPane();             //分层面板
 
         initComponents(table);
 
-        jMenu.setText("个人中心");
-        about.setText("关于我们");
+        jMenu1.setText("个人中心");
+        jMenu2.setText("帮助");
+        about.setText("关于");
+        ImageIcon aboutIco = new ImageIcon(MainJFrame.class.getResource("/img/about.png"));
+        aboutIco.setImage(aboutIco.getImage().getScaledInstance(18, 18, Image.SCALE_DEFAULT));
+        about.setIcon(aboutIco);
         about.addActionListener(new ActionListener() {          //添加事件
             public void actionPerformed(ActionEvent evt) {
-                aboutActionPerformed(table, evt);
+                aboutActionPerformed(table);
             }
         });
-
-        login.setText("登录");
-        login.setPreferredSize(new Dimension(62, 22));
-        ImageIcon loginIco = new ImageIcon(MainJFrame.class.getResource("/img/login.png"));
-        loginIco.setImage(loginIco.getImage().getScaledInstance(18, 18, Image.SCALE_DEFAULT));
-        login.setIcon(loginIco);
-
-        register.setText("注册");
-        ImageIcon registerIco = new ImageIcon(MainJFrame.class.getResource("/img/register.png"));
-        registerIco.setImage(registerIco.getImage().getScaledInstance(18, 18, Image.SCALE_DEFAULT));
-        register.setIcon(registerIco);
 
         quit.setText("退出");
         ImageIcon quit1Ico = new ImageIcon(MainJFrame.class.getResource("/img/quit1.png"));
@@ -75,15 +70,14 @@ public class MainJFrame extends JFrame {
         quit.setIcon(quit1Ico);
         quit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                quitActionPerformed(table, evt);
+                quitActionPerformed(table);
             }
         });
 
-        jMenu.add(login);
-        jMenu.add(register);
-        jMenu.add(quit);
-        jMenuBar.add(jMenu);
-        jMenuBar.add(about);
+        jMenu1.add(quit);
+        jMenu2.add(about);
+        jMenuBar.add(jMenu1);
+        jMenuBar.add(jMenu2);
         setJMenuBar(jMenuBar);
 
         //必须设置为透明的。否则看不到背景图片
@@ -93,54 +87,66 @@ public class MainJFrame extends JFrame {
 
     }
 
+    /**
+     * 初始化登录页面
+     *
+     * @param table
+     */
     private void initComponents(JDesktopPane table) {
 
         JLabel logoLabel = new JLabel("欢迎来到魔兽世界，魔兽世界有你更精彩~");
-        logoLabel.setBounds(20, 110, 300, 25);    //指定标签位置setBounds(x, y, width, height)
+        logoLabel.setBounds(45, 110, 300, 25);   //指定标签位置setBounds(x, y, width, height)
         table.add(logoLabel);
 
-        JLabel userLabel = new JLabel("UserName:");            //创建userLabel标签
-        userLabel.setBounds(40, 150, 80, 25);    //指定标签位置setBounds(x, y, width, height)
+        JLabel userLabel = new JLabel("选择:");             //创建userLabel标签
+        userLabel.setBounds(65, 150, 80, 25);    //指定标签位置setBounds(x, y, width, height)
         table.add(userLabel);
 
-        JTextField userText = new JTextField(20);             //创建文本输入框
-        userText.setBounds(130, 150, 165, 25);
-        table.add(userText);
+        box = new JComboBox();
+        box.addItem(FingerEnum.STONE);
+        box.addItem(FingerEnum.SCISSORS);
+        box.addItem(FingerEnum.CLOTH);
+        box.setBounds(100, 150, 165, 25);
+        table.add(box);
 
-        JLabel passwordLabel = new JLabel("PassWord:");
-        passwordLabel.setBounds(40, 180, 80, 25);
-        table.add(passwordLabel);
-
-        JPasswordField passwordText = new JPasswordField(20);   //创建密码输入框
-        passwordText.setBounds(130, 180, 165, 25);
-        table.add(passwordText);
-
-        JButton loginButton = new JButton("login");           //创建登录按钮
+        JButton loginButton = new JButton("猜拳");
         loginButton.setBounds(70, 220, 80, 25);
         table.add(loginButton);
 
-        JButton registerButton = new JButton("register");       //创建注册按钮
-        registerButton.setBounds(180, 220, 80, 25);
-        table.add(registerButton);
-
     }
 
-    private void aboutActionPerformed(JDesktopPane table, ActionEvent evt) {
-        AboutJFrame aboutJFrame = AboutJFrame.getAboutJFrame();
-        try {
-            table.add(aboutJFrame);
 
-        } catch (IllegalArgumentException e) {
-            //e.printStackTrace();
-        } finally {
-            aboutJFrame.setVisible(true);
+    /**
+     * 打开关于页面
+     *
+     * @param table
+     */
+    private void aboutActionPerformed(JDesktopPane table) {
+        JInternalFrame[] js = table.getAllFrames();
+        for (JInternalFrame j : js) {
+            if (j instanceof AboutJFrame) {
+                j.isSelected();
+                return;
+            }
         }
+
+        AboutJFrame aboutJFrame = new AboutJFrame();
+        table.add(aboutJFrame);
+        aboutJFrame.setVisible(true);
+
     }
 
-    private void quitActionPerformed(JDesktopPane table, ActionEvent evt) {
-        AboutJava1234InterFrm aboutJava1234InterFrm = new AboutJava1234InterFrm();
-        aboutJava1234InterFrm.setVisible(true);
-        table.add(aboutJava1234InterFrm);
+    /**
+     * 退出
+     *
+     * @param table
+     */
+    private void quitActionPerformed(JDesktopPane table) {
+        int result = JOptionPane.showConfirmDialog(table, "真的要离开吗？", "退出", JOptionPane.WARNING_MESSAGE);
+        if (result == 0) {
+            this.dispose();
+            new LoginJFrame().setVisible(true);
+        }
     }
 
     public static void main(String args[]) {
