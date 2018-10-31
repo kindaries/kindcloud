@@ -75,6 +75,7 @@
         <module>kindcloud-zuul</module>
         <module>kindcloud-sys</module>
         <module>kindcloud-tasks</module>
+        <module>kindcloud-socket</module>
     </modules>
 
     <!--全局配置-->
