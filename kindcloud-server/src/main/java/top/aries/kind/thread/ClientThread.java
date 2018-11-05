@@ -1,5 +1,7 @@
 package top.aries.kind.thread;
 
+import top.aries.kind.panel.ServerJPanel;
+
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,12 +46,12 @@ public class ClientThread extends Thread {
     }
 
     //客户端线程的构造方法
-    public ClientThread(Socket socket, ArrayList<ClientThread> clients, JTextArea contentArea, DefaultListModel listModel) {
+    public ClientThread(ServerJPanel serverJPanel) {
         try {
-            this.clients = clients;
-            this.socket = socket;
-            this.contentArea = contentArea;
-            this.listModel = listModel;
+            this.clients = serverJPanel.serverThread.clients;
+            this.socket = serverJPanel.serverThread.socket;
+            this.contentArea = serverJPanel.contentArea;
+            this.listModel = serverJPanel.listModel;
             reader = new BufferedReader(new InputStreamReader(socket
                     .getInputStream()));
             writer = new PrintWriter(socket.getOutputStream());
@@ -58,7 +60,7 @@ public class ClientThread extends Thread {
             StringTokenizer st = new StringTokenizer(inf, "@");
             userName = st.nextToken();
             // 反馈连接成功信息
-            writer.println(userName + "与服务器连接成功!");
+            writer.println(userName + "与服务器连接成功！");
             writer.flush();
             //反馈当前在线用户信息
             if (clients.size() > 0) {
@@ -85,14 +87,13 @@ public class ClientThread extends Thread {
     public void run() {         //不断接收服务器的消息，进行处理。
         String message = null;
         while (true) {
-
             try {
                 message = reader.readLine();    //接收服务器消息
             } catch (IOException e) {
                 message = "CLOSE";
             }
 
-            if (message.equals("CLOSE")) {
+            if (("CLOSE").equals(message)) {
                 contentArea.append(userName + "下线！\r\n");
                 contentArea.selectAll();              //滚动条拉到最下
                 // 断开连接释放资源
@@ -122,6 +123,11 @@ public class ClientThread extends Thread {
                         temp.stop();// 停止这条服务线程
                         return;
                     }
+                }
+            } else if (message.indexOf("TANKONLINE@") > -1) {
+                for (int i = clients.size() - 1; i >= 0; i--) {
+                    clients.get(i).getWriter().println(message);
+                    clients.get(i).getWriter().flush();
                 }
             } else {
                 dispatcherMessage(message);// 转发消息
