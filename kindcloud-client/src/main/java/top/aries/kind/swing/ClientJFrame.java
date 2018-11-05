@@ -155,8 +155,8 @@ public class ClientJFrame extends JFrame {
                     client.setEnabled(false);
                     discon.setEnabled(true);
                 } else {
-                    client.setEnabled(false);
-                    discon.setEnabled(true);
+                    client.setEnabled(true);
+                    discon.setEnabled(false);
                 }
                 start.setEnabled(true);
                 stop.setEnabled(false);
@@ -164,7 +164,6 @@ public class ClientJFrame extends JFrame {
                 tankJPanel.setStop(false);
                 tankJPanel = null;
                 table.removeAll();
-                clientJPanel = new ClientJPanel(userName);
                 table.add(clientJPanel);
                 table.repaint();                //更新
                 table.revalidate();             //使更新有效
