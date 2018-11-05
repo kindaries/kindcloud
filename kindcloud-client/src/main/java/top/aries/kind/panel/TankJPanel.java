@@ -226,13 +226,15 @@ public class TankJPanel extends JPanel implements Runnable {
         while (isStop) {
             try {
                 Thread.sleep(50);   //画板刷新频率
-                /*if (msg != null) {
-                    String jsonString = JSON.toJSONString(mytank);
-                    msg.send("TANKONLINE@" + jsonString);
-                }*/
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            /*if (msg != null) {
+                String jsonString = JSON.toJSONString(mytank);
+                msg.send("TANKONLINE@" + jsonString);
+            }*/
+
             // 判断自己坦克的子弹是否击中敌人坦克
             for (int i = 0; i < mytank.mybs.size(); i++) {
                 Bullet mb = mytank.mybs.get(i);
@@ -262,6 +264,12 @@ public class TankJPanel extends JPanel implements Runnable {
             }
             this.repaint(); //刷新
             if (!mytank.islive) {
+
+                try {
+                    Thread.sleep(2000);   //画板刷新频率
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 //JOptionPane.showMessageDialog(this, "你被GG");
                 mytank.islive = true;
             }

@@ -1,5 +1,11 @@
 package top.aries.kind.model;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+
+import java.util.List;
+
 /**
  * 子弹类
  * 因为多个子弹同时运动所以需要做线程
@@ -45,9 +51,24 @@ public class Bullet extends Thread {
         this.y = y;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getDrect() {
+        return drect;
+    }
+
+    public void setDrect(int drect) {
+        this.drect = drect;
+    }
+
     public void run() {
         while (islive) {
-
             try {
                 Thread.sleep(50);
             } catch (Exception e) {
@@ -74,4 +95,22 @@ public class Bullet extends Thread {
         }
     }
 
+    public static void main(String[] args) {
+
+        Tank ek = new Tank(40, 10, 2, 1, "NPC");
+        Bullet myBullet = new Bullet(40, 10, 5, 3);
+        ek.mybs.add(myBullet);
+        String jsonString = JSON.toJSONString(ek);
+        Tank tank = JSON.parseObject(jsonString, Tank.class);
+        JSONObject aaa = JSONObject.parseObject(jsonString);
+        List<Bullet> mybs = JSON.parseObject(aaa.get("mybs").toString(), new TypeReference<List<Bullet>>() {
+        });
+        for (Bullet b : mybs) {
+            System.out.println(b.getState());
+            b.start();
+            b.yield();
+        }
+        tank.mybs = mybs;
+
+    }
 }

@@ -130,7 +130,7 @@ public class ClientJFrame extends JFrame {
                 tankJPanel = null;
                 table.removeAll();*/
 
-                client.setEnabled(false);
+                /*client.setEnabled(false);
                 discon.setEnabled(false);
                 start.setEnabled(true);
                 stop.setEnabled(true);
@@ -144,7 +144,7 @@ public class ClientJFrame extends JFrame {
                 table.add(tankJPanel);
                 table.repaint();
                 table.revalidate();
-                addKeyListener(new TankListener(tankJPanel));
+                addKeyListener(new TankListener(tankJPanel));*/
             }
         });
         stop.setIcon(stopIco);
@@ -182,7 +182,7 @@ public class ClientJFrame extends JFrame {
         jMenu1.add(discon);
         jMenu1.add(quit);
         jMenu2.add(start);
-        jMenu2.add(online);
+        //jMenu2.add(online);
         jMenu2.add(stop);
         jMenu2.add(notes);
         jMenu3.add(about);

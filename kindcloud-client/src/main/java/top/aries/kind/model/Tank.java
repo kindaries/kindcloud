@@ -40,8 +40,16 @@ public class Tank implements Runnable {
         return x;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
     public int getY() {
         return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public int getDrect() {
@@ -60,20 +68,60 @@ public class Tank implements Runnable {
         this.type = type;
     }
 
-    public void setTankMap(TankMap tankMap) {
-        this.tankMap = tankMap;
+    public int getSpeed() {
+        return speed;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public List<Bullet> getMybs() {
         return mybs;
     }
 
-    public void setMybs(Vector<Bullet> mybs) {
+    public void setMybs(List<Bullet> mybs) {
         this.mybs = mybs;
+    }
+
+    public Bullet getMyBullet() {
+        return myBullet;
+    }
+
+    public void setMyBullet(Bullet myBullet) {
+        this.myBullet = myBullet;
+    }
+
+    public boolean isIslive() {
+        return islive;
+    }
+
+    public void setIslive(boolean islive) {
+        this.islive = islive;
+    }
+
+    public TankMap getTankMap() {
+        return tankMap;
+    }
+
+    public void setTankMap(TankMap tankMap) {
+        this.tankMap = tankMap;
+    }
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     //上移

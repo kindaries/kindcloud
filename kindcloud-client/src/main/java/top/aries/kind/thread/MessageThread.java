@@ -112,6 +112,10 @@ public class MessageThread extends Thread {
 
                     JSONObject aaa = JSONObject.parseObject(jsonStr);
                     List<Bullet> mybs = JSON.parseObject(aaa.get("mybs").toString(), new TypeReference<List<Bullet>>(){});
+                    for (Bullet b : mybs) {
+                        b.start();
+                        b.yield();
+                    }
                     tank.mybs=mybs;
 
                     if (tankJPanel != null)
