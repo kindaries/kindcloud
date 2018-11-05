@@ -1,6 +1,7 @@
 package top.aries.kind.thread;
 
-import javax.swing.*;
+import top.aries.kind.panel.ServerJPanel;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,30 +21,26 @@ import java.util.StringTokenizer;
  */
 public class ServerThread extends Thread {
 
-    private ServerSocket serverSocket;
-    private ArrayList<ClientThread> clients;    //客户端列表
+    public ServerSocket serverSocket;
+    public Socket socket;
 
-    private DefaultListModel listModel; //用户列表
-    private JTextArea contentArea;      //消息框
+    public ArrayList<ClientThread> clients;    //客户端列表
 
-    private final int MAX_CLIENT = 3;          //人数上限
+    private ServerJPanel serverJPanel;         //服务器面板
+
+    private final int MAX_CLIENT = 30;          //人数上限
 
     // 服务器线程的构造方法
-    public ServerThread(ServerSocket serverSocket, DefaultListModel listModel, JTextArea contentArea) {
-        this.serverSocket = serverSocket;
-        this.listModel = listModel;
-        this.contentArea = contentArea;
+    public ServerThread(ServerJPanel serverJPanel) throws IOException {
+        this.serverSocket = new ServerSocket(8888);
         this.clients = new ArrayList<>();
-    }
-
-    public ArrayList<ClientThread> getClients() {
-        return clients;
+        this.serverJPanel = serverJPanel;
     }
 
     public void run() {
-        while (true) {// 不停的等待客户端的链接
+        while (true) {    //不停的等待客户端的链接
             try {
-                Socket socket = serverSocket.accept();
+                socket = serverSocket.accept();
                 if (clients.size() == MAX_CLIENT) {         //如果已达人数上限
                     BufferedReader r = new BufferedReader(
                             new InputStreamReader(socket.getInputStream()));
@@ -61,16 +58,18 @@ public class ServerThread extends Thread {
                     socket.close();
                     continue;
                 }
-                ClientThread client = new ClientThread(socket, clients, contentArea, listModel);
+                ClientThread client = new ClientThread(serverJPanel);
                 client.start();// 开启对此客户端服务的线程
                 clients.add(client);
-                listModel.addElement(client.getUserName());// 更新在线列表
-                contentArea.append(client.getUserName() + "上线！\r\n");
-                contentArea.selectAll();              //滚动条拉到最下
+                serverJPanel.listModel.addElement(client.getUserName());// 更新在线列表
+                serverJPanel.contentArea.append(client.getUserName() + "上线！\r\n");
+                serverJPanel.contentArea.selectAll();              //滚动条拉到最下
             } catch (IOException e) {
                 e.printStackTrace();
-                contentArea.append("服务器运行异常！\r\n");
-                contentArea.selectAll();              //滚动条拉到最下
+                serverJPanel.contentArea.append("服务器运行异常！\r\n");
+                serverJPanel.contentArea.selectAll();              //滚动条拉到最下
+                serverJPanel.isStart = false;
+                return;
             }
         }
     }
