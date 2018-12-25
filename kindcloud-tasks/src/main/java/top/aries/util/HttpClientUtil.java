@@ -34,9 +34,6 @@ public class HttpClientUtil {
         conn.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
         conn.connect();
         Map<String, List<String>> map = conn.getHeaderFields();
-        for (String s : map.keySet()) {
-            //System.out.println(s + "-->" + map.get(s));
-        }
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
         String line;
         while ((line = in.readLine()) != null) {
