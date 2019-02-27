@@ -17,16 +17,16 @@
 
     <!--每天生成日志文件-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logPath}/${projectName}/logs.log</file>
+        <file>${logPath}/${projectName}/day/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>${logPath}/${projectName}/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <FileNamePattern>${logPath}/${projectName}/day/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
+                <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <totalSizeCap>2000MB</totalSizeCap>
+            <totalSizeCap>200MB</totalSizeCap>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出-->
@@ -36,16 +36,16 @@
 
     <!--controller层的文件单独记录-->
     <appender name="CONTROLLER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logPath}/controller/logs.log</file>
+        <file>${logPath}/${projectName}/controller/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>${logPath}/controller/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <FileNamePattern>${logPath}/${projectName}/controller/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
+                <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <totalSizeCap>2000MB</totalSizeCap>
+            <totalSizeCap>200MB</totalSizeCap>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出-->
@@ -55,16 +55,16 @@
 
     <!--kind的文件单独记录-->
     <appender name="KIND" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logPath}/kind/logs.log</file>
+        <file>${logPath}/${projectName}/kind/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>${logPath}/kind/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <FileNamePattern>${logPath}/${projectName}/kind/logs-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
+                <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <totalSizeCap>2000MB</totalSizeCap>
+            <totalSizeCap>200MB</totalSizeCap>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出-->
@@ -72,12 +72,14 @@
         </encoder>
     </appender>
 
-
     <!--日志输出级别-->
     <root level="${logLevel}">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
+
+    <!--打印sql语句-->
+    <logger name="top.aries.kind.mapper" level="DEBUG"></logger>
 
     <logger name="top.aries.kind.controller" level="DEBUG">
         <appender-ref ref="CONTROLLER"/>
@@ -86,9 +88,6 @@
     <logger name="kind" level="DEBUG">
         <appender-ref ref="KIND"/>
     </logger>
-
-    <!--打印sql语句-->
-    <logger name="top.aries.kind.mapper" level="DEBUG"></logger>
 
     <!--升高打印的日志级别,避免日志过多-->
     <logger name="com.netflix.discovery" level="INFO"></logger>
