@@ -17,6 +17,7 @@
 
     <dependencies>
 
+        <!--这里不需要再引入了，父pom已经有了-->
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>

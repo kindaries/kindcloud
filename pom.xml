@@ -33,7 +33,7 @@
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <!--json序列化工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
