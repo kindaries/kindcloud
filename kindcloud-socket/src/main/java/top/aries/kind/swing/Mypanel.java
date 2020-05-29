@@ -13,7 +13,7 @@ import java.util.Vector;
  * 游戏显示面板
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:29
  * Created by IntelliJ IDEA.
  */

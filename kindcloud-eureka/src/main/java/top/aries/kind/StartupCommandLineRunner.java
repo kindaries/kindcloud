@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 项目授权
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-09-20 11:32
  * Created by IntelliJ IDEA.
  */

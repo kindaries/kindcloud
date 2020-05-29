@@ -5,7 +5,7 @@ import java.net.URL;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-25 15:30
  * Created by IntelliJ IDEA.
  */

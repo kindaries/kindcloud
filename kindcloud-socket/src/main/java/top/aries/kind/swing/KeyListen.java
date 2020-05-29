@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
  * 这里有个控制最大发射子弹数
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:32
  * Created by IntelliJ IDEA.
  */

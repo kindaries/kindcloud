@@ -13,7 +13,7 @@ import java.net.BindException;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-11-02 9:20
  * Created by IntelliJ IDEA.
  */

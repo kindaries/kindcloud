@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * 6、游戏开始选项
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:31
  * Created by IntelliJ IDEA.
  */

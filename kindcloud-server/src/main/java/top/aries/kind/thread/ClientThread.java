@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  * 客户端线程
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-30 13:49
  * Created by IntelliJ IDEA.
  */

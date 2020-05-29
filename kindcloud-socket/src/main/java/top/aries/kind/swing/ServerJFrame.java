@@ -8,7 +8,7 @@ import java.net.URL;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-29 16:45
  * Created by IntelliJ IDEA.
  */

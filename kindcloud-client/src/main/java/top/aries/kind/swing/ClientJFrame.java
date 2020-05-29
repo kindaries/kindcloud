@@ -15,7 +15,7 @@ import java.awt.event.WindowEvent;
  * 客户端主页面
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-30 10:37
  * Created by IntelliJ IDEA.
  */

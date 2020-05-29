@@ -5,7 +5,7 @@ package top.aries.kind.model;
  * 考虑到同时爆炸定义个类
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:24
  * Created by IntelliJ IDEA.
  */

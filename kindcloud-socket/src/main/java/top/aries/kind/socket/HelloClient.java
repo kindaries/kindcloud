@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-29 16:33
  * Created by IntelliJ IDEA.
  */

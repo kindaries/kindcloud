@@ -2,7 +2,7 @@ package top.aries.kind.uitl;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-29 15:36
  * Created by IntelliJ IDEA.
  */

@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-25 11:27
  * Created by IntelliJ IDEA.
  */

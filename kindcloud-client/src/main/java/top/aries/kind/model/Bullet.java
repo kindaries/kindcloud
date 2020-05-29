@@ -11,7 +11,7 @@ import java.util.List;
  * 因为多个子弹同时运动所以需要做线程
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:25
  * Created by IntelliJ IDEA.
  */

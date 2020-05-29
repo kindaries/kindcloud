@@ -5,7 +5,7 @@ package top.aries.kind.model;
  * 防止敌方坦克重叠
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:27
  * Created by IntelliJ IDEA.
  */

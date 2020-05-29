@@ -10,7 +10,7 @@ import java.net.Socket;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-29 16:32
  * Created by IntelliJ IDEA.
  */

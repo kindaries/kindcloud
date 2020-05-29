@@ -11,7 +11,7 @@ import java.net.URL;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-29 13:48
  * Created by IntelliJ IDEA.
  */

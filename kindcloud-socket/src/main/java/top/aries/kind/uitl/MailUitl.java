@@ -59,7 +59,7 @@ public class MailUitl {
 
     public static void main(String[] args) {
         try {
-            SendMail("zhangshuai@szhtxx.com", "标题", "内容");
+            SendMail("kindaries@qq.com", "标题", "内容");
             System.out.println("发送成功！");
         } catch (Exception e) {
             e.printStackTrace();

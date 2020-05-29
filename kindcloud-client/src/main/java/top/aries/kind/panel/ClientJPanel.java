@@ -14,7 +14,7 @@ import java.net.Socket;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-11-02 11:40
  * Created by IntelliJ IDEA.
  */

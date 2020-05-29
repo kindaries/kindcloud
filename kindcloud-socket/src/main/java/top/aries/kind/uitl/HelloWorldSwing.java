@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-25 15:25
  * Created by IntelliJ IDEA.
  */

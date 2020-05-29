@@ -5,7 +5,7 @@ package top.aries.kind.model;
  * 因为多个子弹同时运动所以需要个内部类做线程
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:25
  * Created by IntelliJ IDEA.
  */

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * 拦截器配置进Spring
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-24 14:46
  * Created by IntelliJ IDEA.
  */

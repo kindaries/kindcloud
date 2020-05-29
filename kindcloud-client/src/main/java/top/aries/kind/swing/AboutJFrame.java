@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-26 11:31
  * Created by IntelliJ IDEA.
  */

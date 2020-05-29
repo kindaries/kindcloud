@@ -20,7 +20,7 @@ import java.util.StringTokenizer;
  * 接收消息线程
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-30 15:56
  * Created by IntelliJ IDEA.
  */

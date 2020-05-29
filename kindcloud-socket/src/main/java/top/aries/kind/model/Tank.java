@@ -8,7 +8,7 @@ import java.util.Vector;
  * 这里自己坦克并没有启动线程
  * <p>
  * Author: kindaries
- * Company: shenzhen Aisino
+ * Company: shenzhen
  * Date: Created in 2018-10-31 16:28
  * Created by IntelliJ IDEA.
  */
